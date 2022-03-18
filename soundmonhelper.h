@@ -16,44 +16,41 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#ifndef BPHELPER_H
-#define BPHELPER_H
+#ifndef SOUNDMONHELPER_H
+#define SOUNDMONHELPER_H
 
 #include <QMap>
 #include <QFile>
 #include <qmmp/qmmp.h>
-
-class Player;
-typedef struct {
-    Player *input;
-    int bitrate;
-} decode_info;
+#include <libsoundmon/player.h>
 
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class BpHelper
+class SoundMonHelper
 {
 public:
-    explicit BpHelper(const QString &path);
-    ~BpHelper();
+    explicit SoundMonHelper(const QString &path);
+    ~SoundMonHelper();
 
     void deinit();
-
     bool initialize();
-    qint64 totalTime() const;
-    void seek(qint64 time);
 
-    int bitrate() const;
-    int sampleRate() const;
-    int channels() const;
-    int bitsPerSample() const;
+    inline void seek(qint64 time) { return m_input->Seek(time); }
+    inline qint64 totalTime() const { return m_input->GetLength(); }
 
+    inline int bitrate() const { return m_bitrate; }
+    inline int sampleRate() const { return SAMPLERATE; }
+    inline int channels() const { return 2; }
+    inline int depth() const { return 8; }
+
+    #undef SAMPLERATE
     qint64 read(unsigned char *data, qint64 maxSize);
 
 private:
     QString m_path;
-    decode_info *m_info = nullptr;
+    Player *m_input = nullptr;
+    int m_bitrate = 0;
 
 };
 

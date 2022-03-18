@@ -16,31 +16,31 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#ifndef DECODER_BP_H
-#define DECODER_BP_H
+#ifndef DECODER_SOUNDMON_H
+#define DECODER_SOUNDMON_H
 
 #include <qmmp/decoder.h>
 
-class BpHelper;
+class SoundMonHelper;
 
 /*!
  * @author Greedysky <greedysky@163.com>
  */
-class DecoderBp : public Decoder
+class DecoderSoundMon : public Decoder
 {
 public:
-    explicit DecoderBp(const QString &path);
-    virtual ~DecoderBp();
+    explicit DecoderSoundMon(const QString &path);
+    virtual ~DecoderSoundMon();
 
     // Standard Decoder API
-    virtual bool initialize() override;
-    virtual qint64 totalTime() const override;
-    virtual int bitrate() const override;
-    virtual qint64 read(unsigned char *data, qint64 maxSize) override;
-    virtual void seek(qint64 time) override;
+    virtual bool initialize() override final;
+    virtual qint64 totalTime() const override final;
+    virtual int bitrate() const override final;
+    virtual qint64 read(unsigned char *data, qint64 maxSize) override final;
+    virtual void seek(qint64 time) override final;
 
 private:
-    BpHelper *m_helper = nullptr;
+    SoundMonHelper *m_helper = nullptr;
 
 };
 
