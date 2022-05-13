@@ -4,9 +4,16 @@
 
 #include <QMessageBox>
 
-bool DecoderSoundMonFactory::canDecode(QIODevice *) const
+bool DecoderSoundMonFactory::canDecode(QIODevice *input) const
 {
-    return false;
+    QFile *file = static_cast<QFile*>(input);
+    if(!file)
+    {
+        return false;
+    }
+
+    SoundMonHelper helper(file->fileName());
+    return helper.initialize();
 }
 
 DecoderProperties DecoderSoundMonFactory::properties() const
@@ -16,6 +23,7 @@ DecoderProperties DecoderSoundMonFactory::properties() const
     properties.shortName = "soundmon";
     properties.filters << "*.bp" << "*.bp3";
     properties.description = "BP SoundMon Audio File";
+    properties.protocols << "file";
     properties.noInput = true;
     return properties;
 }
@@ -47,7 +55,7 @@ QList<TrackInfo*> DecoderSoundMonFactory::createPlayList(const QString &path, Tr
         info->setValue(Qmmp::SAMPLERATE, helper.sampleRate());
         info->setValue(Qmmp::CHANNELS, helper.channels());
         info->setValue(Qmmp::BITS_PER_SAMPLE, helper.depth());
-        info->setValue(Qmmp::FORMAT_NAME, "SoundMon");
+        info->setValue(Qmmp::FORMAT_NAME, "BP SoundMon");
         info->setDuration(helper.totalTime());
     }
     return QList<TrackInfo*>() << info;

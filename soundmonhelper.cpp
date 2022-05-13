@@ -29,7 +29,8 @@ bool SoundMonHelper::initialize()
     }
 
     const qint64 size = file.size();
-    const QByteArray module = file.readAll();
+    const QByteArray &module = file.readAll();
+    file.close();
 
     m_input = new Player((BYTE*)module.constData(), size);
     if(!m_input->Load())
@@ -37,8 +38,6 @@ bool SoundMonHelper::initialize()
         qWarning("SoundMonHelper: Load error");
         return false;
     }
-
-    m_bitrate = size * 8.0 / totalTime() + 1.0f;
     return true;
 }
 
