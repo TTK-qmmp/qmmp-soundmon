@@ -25,6 +25,7 @@ DecoderProperties DecoderSoundMonFactory::properties() const
     properties.description = "BP SoundMon Audio File";
     properties.protocols << "file";
     properties.noInput = true;
+    properties.hasAbout = true;
     return properties;
 }
 
