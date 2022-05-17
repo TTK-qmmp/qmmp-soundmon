@@ -75,9 +75,9 @@ void DecoderSoundMonFactory::showSettings(QWidget *parent)
 
 void DecoderSoundMonFactory::showAbout(QWidget *parent)
 {
-    QMessageBox::about (parent, tr("About BP Reader Plugin"),
-                        tr("Qmmp BP Reader Plugin")+"\n"+
-                        tr("Written by: Greedysky <greedysky@163.com>"));
+    QMessageBox::about(parent, tr("About BP Reader Plugin"),
+                       tr("Qmmp BP Reader Plugin") + "\n" +
+                       tr("Written by: Greedysky <greedysky@163.com>"));
 }
 
 QString DecoderSoundMonFactory::translation() const
