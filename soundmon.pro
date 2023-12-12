@@ -1,7 +1,7 @@
 HEADERS += decodersoundmonfactory.h \
            decoder_soundmon.h \
            soundmonhelper.h
-    
+
 SOURCES += decodersoundmonfactory.cpp \
            decoder_soundmon.cpp \
            soundmonhelper.cpp \
