@@ -19,8 +19,6 @@ SOURCES += decodersoundmonfactory.cpp \
            libsoundmon/player.cpp \
            libsoundmon/soundplayer.cpp
 
-INCLUDEPATH += $$PWD/libsoundmon
-
 #CONFIG += BUILD_PLUGIN_INSIDE
 contains(CONFIG, BUILD_PLUGIN_INSIDE){
     include($$PWD/../../plugins.pri)
