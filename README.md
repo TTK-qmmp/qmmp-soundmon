@@ -1,5 +1,6 @@
 This is a plugin for Qmmp (1.6.0 or greater) which supports BP file.
-(BP SoundMon Audio File)
+
+Based on [BP SoundMon](http://www.brianpostma.com) (BP SoundMon audio module).
 
 The following packages are required, including development headers,
 which some vendors split into separate packages:

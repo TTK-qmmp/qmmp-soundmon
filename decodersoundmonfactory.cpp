@@ -86,7 +86,9 @@ void DecoderSoundMonFactory::showAbout(QWidget *parent)
 {
     QMessageBox::about(parent, tr("About BP Reader Plugin"),
                        tr("Qmmp BP Reader Plugin") + "\n" +
-                       tr("Written by: Greedysky <greedysky@163.com>"));
+                       tr("Written by: Greedysky <greedysky@163.com>") + "\n" +
+                       tr("Based on the source code from the BP SoundMon") + "\n" +
+                       tr("Written by Brian Postma (C) 1999"));
 }
 
 QString DecoderSoundMonFactory::translation() const
